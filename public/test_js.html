@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Testing JS</title>
+
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+       <script type="text/javascript">
+       $(document).ready(function(){
+			
+			var peopleObj = function(name, age, gender){
+				var temp = {};
+				temp.name = name;
+				temp.age = age;
+				temp.gender = gender;
+				
+				temp.profile = function(){
+					return "Name :" + this.name + " - Age :" + this.age + " - Gender :" + this.gender;
+				};
+
+				temp.addDomProfile = function(){
+					$("body").append("<div>"+"Name :" + this.name + " - Age :" + this.age + " - Gender :" + this.gender+"</div>");
+				}
+				return temp;
+			};
+
+			var p1 = peopleObj("Jae Moon",50,"Male");
+			var p2 = peopleObj("Mary Lee",46,"Female");
+
+			console.log(p1.profile());
+			console.log(p2.profile());
+
+			p1.addDomProfile()
+			p2.addDomProfile()
+
+
+			var tt1 = {
+				ff1 : function(arg){
+					console.log("arg is " +arg);
+				}
+			};
+			tt1.ff1("Wow");
+
+
+			var ary = ["a1","a2","a3","a4"];
+			ary.map(function(element, index, originalAry){
+				console.log("**************");
+				console.log(Array.prototype.slice.call(arguments));
+				console.log("**************");
+				console.log("originalAry");
+				console.log(originalAry);
+				console.log("-------This is important.... show all return arguments--------------");
+				console.log("arguments");
+				console.log(arguments);
+				console.log("--------------------------------------------------------------------");
+				console.log("**************");
+				console.log(Array.prototype.slice.call(arguments));
+				console.log(index + " : " + element);
+			});
+
+			// function tryMe() {
+			//     console.log("tryme");
+			//     console.log(arguments);
+			// }
+
+			// function callbackTester() {
+			//     var args = Array.prototype.slice.call(arguments),
+			//         callback = args.shift();
+			//     callback.apply(this, args);
+			// }
+
+			// callbackTester (tryMe, "hello", "goodbye");
+
+			// callbackTester (tryMe, "hello", "goodbye", "seeYouLater");
+
+
+			var testCallBack = function(callback){
+				console.log("inside function");
+				callback();
+			}
+			testCallBack(function(){
+				console.log("from callback");
+			})
+
+
+
+
+
+       });
+
+       </script>
+
+
+    </head>
+    <body>
+        
+        <script src="js/main.js"></script>
+    </body>
+</html>
